@@ -9,4 +9,4 @@ while read -r line; do
   sum=$(($sum + $num))
 done < input.txt
 
-echo "sum: ${sum}"
+echo "$sum"
