@@ -6,9 +6,9 @@ def read_lines() -> [str]:
 
 
 def parse_input(lines: []) -> ([], {}):
-    numbers = []
-    symbols = {}
-    stars = []
+    numbers = []    # [{123: [(1,2), (1,3)]}]
+    symbols = {}    # {(1,2): '$'}
+    stars = []      # [(1,2), (3,4)]
     for line_index, line in enumerate(lines):
         num_str = ""
         num_coords = []
