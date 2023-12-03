@@ -8,7 +8,6 @@ def read_lines() -> [str]:
 def parse_input(lines: []) -> ([], {}):
     numbers = []    # [{123: [(1,2), (1,3)]}]
     symbols = {}    # {(1,2): '$'}
-    stars = []      # [(1,2), (3,4)]
     for line_index, line in enumerate(lines):
         num_str = ""
         num_coords = []
@@ -22,9 +21,7 @@ def parse_input(lines: []) -> ([], {}):
                 num_coords = []
             if not char.isdigit() and char != '.':
                 symbols[(line_index, char_index)] = char
-            if char == "*":
-                stars.append((line_index, char_index))
-    return numbers, symbols, stars
+    return numbers, symbols
 
 
 def get_coord_neighbours(line_idx, col_idx):
@@ -42,7 +39,7 @@ def is_adjacent(coord: tuple):
     return False
 
 
-numbers, symbols, stars = parse_input(read_lines())
+numbers, symbols = parse_input(read_lines())
 
 
 def part_1():
@@ -56,6 +53,7 @@ def part_1():
 
 
 def part_2():
+    stars = [k for k, v in symbols.items() if v == '*']
     coord_num_map = {}
     for num, coords in numbers:
         for coord in coords:
